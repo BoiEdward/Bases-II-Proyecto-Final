@@ -1,0 +1,72 @@
+<!-- mainPage.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/mainPage">CRUD Nodejs Mysql</a>
+      <a class="navbar-brand" href="/crearHospedaje">Crear Hospedajes</a>
+      <a class="navbar-brand" href="/crearAuto">Crear Vehiculos</a>
+      <a class="navbar-brand" href="/crearPaquete">Crear Paquetes</a>
+
+      <form action="/logout" method="post">
+        <button type="submit" class="btn btn-primary">Cerrar sesión</button>
+      </form>
+    </div>
+  </nav>
+
+  <form action="/crearHospedaje" method="post" class="mt-4" style="margin: 50px;">
+    <h1>CREAR HOSPEDAJE</h1>
+    <!-- Campo de nombre del hospedaje -->
+    <div class="mb-3">
+      <label for="nombreHospedaje" class="form-label">Nombre del Hospedaje:</label>
+      <input type="text" id="nombreHospedaje" name="nombreHospedaje" class="form-control" required>
+    </div>
+  
+    <!-- Barra de selección -->
+    <div class="mb-3">
+      <label for="tipoHospedaje" class="form-label">Tipo de Hospedaje:</label>
+      <select id="tipoHospedaje" name="tipoHospedaje" class="form-select" required>
+        <!-- Iterar sobre los tipos de hospedaje y agregar opciones dinámicamente -->
+        <% tipoHospedajes.rows.forEach(function(tipoHospedaje) { %>
+          <option value="<%= tipoHospedaje[0] %>"><%= tipoHospedaje[0] %></option>
+        <% }); %>
+      </select>
+    </div>
+  
+    <!-- Botón de envío del formulario -->
+    <button type="submit" class="btn btn-primary">Crear Hospedaje</button>
+  </form>  
+
+  <form action="/crearTipoHospedaje" method="post" class="mt-4" style="margin: 50px;">
+    <h1>CREAR TIPO HOSPEDAJE</h1>
+    <!-- Campo de nombre del hospedaje -->
+    <div class="mb-3">
+      <label for="nombreTipoHospedaje" class="form-label">Nombre del Tipo Hospedaje:</label>
+      <input type="text" id="nombreTipoHospedaje" name="nombreTipoHospedaje" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="descripcionTipoHospedaje" class="form-label">Descripción del Tipo de Hospedaje:</label>
+        <input type="text" id="descripcionTipoHospedaje" name="descripcionTipoHospedaje" class="form-control" required>
+    </div>
+  
+    <!-- Botón de envío del formulario -->
+    <button type="submit" class="btn btn-primary">Crear Tipo Hospedaje</button>
+  </form>  
+  
+</body>
+</html>
