@@ -1,2 +1,2 @@
 # Bases-II-Proyecto-Final
-hola
+Este es el proyecto final de bases de datos II
